@@ -108,6 +108,7 @@ fun AmphibianCard(
                 .data(item.imgSrc)
                 .error(R.drawable.ic_broken_image)
                 .placeholder(R.drawable.loading_img)
+                .crossfade(true)
                 .build(),
             contentDescription = "",
             contentScale = ContentScale.FillWidth,
