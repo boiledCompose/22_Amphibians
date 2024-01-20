@@ -1,7 +1,7 @@
 package com.example.amphibians.data
 
 import com.example.amphibians.network.AmphibianApiService
-import com.example.amphibians.network.model.AmphibianItem
+import com.example.amphibians.model.AmphibianItem
 
 interface AmphibianRepository{
     suspend fun getAmphibianItems(): List<AmphibianItem>

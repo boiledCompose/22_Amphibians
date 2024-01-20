@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.amphibians.R
-import com.example.amphibians.network.model.AmphibianItem
+import com.example.amphibians.model.AmphibianItem
 
 private const val TAG = "MainScreen"
 
