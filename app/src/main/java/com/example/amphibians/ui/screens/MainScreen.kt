@@ -99,7 +99,7 @@ fun AmphibianCard(
         Text(
             text = stringResource(id = R.string.amphibian_card_title, item.name, item.type),
             modifier = modifier.padding(dimensionResource(R.dimen.dimen_amphibian_card_text)),
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleMedium
 
         )
         
@@ -115,6 +115,7 @@ fun AmphibianCard(
         
         Text(
             text = item.description,
+            style = MaterialTheme.typography.bodyMedium,
             modifier = modifier.padding(dimensionResource(R.dimen.dimen_amphibian_card_text))
         )
     }

@@ -9,6 +9,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.amphibians.R
 import com.example.amphibians.ui.screens.AmphibianViewModel
@@ -23,7 +24,8 @@ fun AmphibiansApp() {
         Surface(
             modifier = Modifier.padding(it)
         ) {
-            val amphibianViewModel:AmphibianViewModel = viewModel()
+            val amphibianViewModel:AmphibianViewModel =
+                viewModel(factory = AmphibianViewModel.Factory)
 
             MainScreen(amphibianViewModel.amphibianUiState)
         }
@@ -36,7 +38,8 @@ fun AmphibiansTopBar() {
     TopAppBar(
         title = {
             Text(
-                text = stringResource(id = R.string.app_name)
+                text = stringResource(id = R.string.app_name),
+                modifier = Modifier.padding(start = 8.dp)
             )
         }
     )
