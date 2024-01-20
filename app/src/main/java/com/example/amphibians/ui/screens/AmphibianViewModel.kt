@@ -18,20 +18,21 @@ class AmphibianViewModel: ViewModel() {
         private set
 
     init {
-        getAmphibianItem()
+        getAmphibianItems()
     }
 
-    private fun getAmphibianItem() {
+    private fun getAmphibianItems() {
         viewModelScope.launch {
-            val result = AmphibianApi.retrofitService.getAmphibianList()
             Log.d(TAG, amphibianUiState.toString())
             amphibianUiState = try{
-                 AmphibianUiState.Success(result)
+                val result = AmphibianApi.retrofitService.getAmphibianList()
+                AmphibianUiState.Success(result)
             } catch(e:IOException){
                 AmphibianUiState.Error
             } catch (e: HttpException) {
                 AmphibianUiState.Error
             }
+            Log.d(TAG, amphibianUiState.toString())
         }
     }
 }

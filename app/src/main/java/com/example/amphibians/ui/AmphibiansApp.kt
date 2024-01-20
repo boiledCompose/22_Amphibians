@@ -9,6 +9,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.amphibians.R
 import com.example.amphibians.ui.screens.AmphibianViewModel
 import com.example.amphibians.ui.screens.MainScreen
@@ -22,7 +23,8 @@ fun AmphibiansApp() {
         Surface(
             modifier = Modifier.padding(it)
         ) {
-            val amphibianViewModel = AmphibianViewModel()
+            val amphibianViewModel:AmphibianViewModel = viewModel()
+
             MainScreen(amphibianViewModel.amphibianUiState)
         }
     }

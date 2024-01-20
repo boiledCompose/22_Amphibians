@@ -74,7 +74,7 @@ fun ResultScreen(
         modifier = modifier.fillMaxWidth(),
         contentPadding = PaddingValues(4.dp)
     ) {
-        items(items = itemList, key = { item -> item} ) {
+        items(items = itemList ) {
             item -> AmphibianCard(item = item)
         }
     }
