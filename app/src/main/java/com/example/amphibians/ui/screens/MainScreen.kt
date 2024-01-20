@@ -94,11 +94,11 @@ fun AmphibianCard(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.dimen_padding_amphibian_card))
+        modifier = modifier.padding(bottom = dimensionResource(id = R.dimen.dimen_padding_amphibian_card))
     ) {
         Text(
             text = stringResource(id = R.string.amphibian_card_title, item.name, item.type),
-            modifier = Modifier.padding(dimensionResource(R.dimen.dimen_amphibian_card_text)),
+            modifier = modifier.padding(dimensionResource(R.dimen.dimen_amphibian_card_text)),
             style = MaterialTheme.typography.titleLarge
 
         )
@@ -111,11 +111,11 @@ fun AmphibianCard(
                 .build(),
             contentDescription = "",
             contentScale = ContentScale.FillWidth,
-            modifier = Modifier.fillMaxWidth())
+            modifier = modifier.fillMaxWidth())
         
         Text(
             text = item.description,
-            modifier = Modifier.padding(dimensionResource(R.dimen.dimen_amphibian_card_text))
+            modifier = modifier.padding(dimensionResource(R.dimen.dimen_amphibian_card_text))
         )
     }
 }
