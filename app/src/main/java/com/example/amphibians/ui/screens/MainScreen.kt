@@ -7,17 +7,24 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.amphibians.R
 import com.example.amphibians.network.model.AmphibianItem
 
@@ -69,9 +76,10 @@ fun ResultScreen(
     itemList: List<AmphibianItem>,
     modifier: Modifier = Modifier
 ) {
-    LazyVerticalGrid(
-        columns = GridCells.Adaptive(150.dp),
-        modifier = modifier.fillMaxWidth(),
+    LazyColumn(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
         contentPadding = PaddingValues(4.dp)
     ) {
         items(items = itemList ) {
@@ -85,10 +93,29 @@ fun AmphibianCard(
     item: AmphibianItem,
     modifier: Modifier = Modifier
 ) {
-    Text(
-        text = item.name
-    )
-    Text(
-        text = item.description
-    )
+    Card(
+        modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.dimen_padding_amphibian_card))
+    ) {
+        Text(
+            text = stringResource(id = R.string.amphibian_card_title, item.name, item.type),
+            modifier = Modifier.padding(dimensionResource(R.dimen.dimen_amphibian_card_text)),
+            style = MaterialTheme.typography.titleLarge
+
+        )
+        
+        AsyncImage(
+            model = ImageRequest.Builder(context = LocalContext.current)
+                .data(item.imgSrc)
+                .error(R.drawable.ic_broken_image)
+                .placeholder(R.drawable.loading_img)
+                .build(),
+            contentDescription = "",
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier.fillMaxWidth())
+        
+        Text(
+            text = item.description,
+            modifier = Modifier.padding(dimensionResource(R.dimen.dimen_amphibian_card_text))
+        )
+    }
 }
